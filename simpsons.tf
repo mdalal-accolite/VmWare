@@ -2,7 +2,7 @@ terraform {
   required_providers {
     vsphere = {
       source = "hashicorp/vsphere"
-      version = "2.0.2"
+      version = "2.6.0"
     }
   }
 }
@@ -72,14 +72,14 @@ resource "vsphere_virtual_machine" "vm" {
       eagerly_scrub    = "${data.vsphere_virtual_machine.template.disks.0.eagerly_scrub}"
       thin_provisioned = "${data.vsphere_virtual_machine.template.disks.0.thin_provisioned}"
     }
-   
+
    disk {
      label            = "disk1"
      size             = "${data.vsphere_virtual_machine.template.disks.1.size}"
      eagerly_scrub    = "${data.vsphere_virtual_machine.template.disks.1.eagerly_scrub}"
      thin_provisioned = "${data.vsphere_virtual_machine.template.disks.1.thin_provisioned}"
      unit_number = 1
-    } 
+    }
 
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
@@ -88,10 +88,7 @@ resource "vsphere_virtual_machine" "vm" {
         timeout =60
         windows_options {
              computer_name = "${var.vm_name}"
-             admin_password = "${var.local_adminpass}"
-             join_domain      = "${var.windomain}"
-             domain_admin_user = "${var.domain_admin_user}"
-             domain_admin_password = "${var.domain_admin_password}" 
+             admin_password = "${var.local_adminpass}" 
          }
         network_interface {}
       }

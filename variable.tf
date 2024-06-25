@@ -53,16 +53,5 @@ variable "vm_network" {
   description = "Network used for the vSphere virtual machines"
 }
 
-variable "windomain" {
-  description = "The domain to join for this virtual machine. One of this or workgroup must be included."
-}
-
-variable "domain_admin_user" {
-  description = "Domain admin user to join the server to AD.(Required) when using join_windomain option."
-}
-
-variable "domain_admin_password" {
-  description = "Doamin User pssword to join the server to AD.(Required) when using join_windomain option."
-}
 
 
