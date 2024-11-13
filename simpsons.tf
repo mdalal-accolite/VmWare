@@ -73,14 +73,6 @@ resource "vsphere_virtual_machine" "vm" {
       thin_provisioned = "${data.vsphere_virtual_machine.template.disks.0.thin_provisioned}"
     }
 
-   disk {
-     label            = "disk1"
-     size             = "${data.vsphere_virtual_machine.template.disks.1.size}"
-     eagerly_scrub    = "${data.vsphere_virtual_machine.template.disks.1.eagerly_scrub}"
-     thin_provisioned = "${data.vsphere_virtual_machine.template.disks.1.thin_provisioned}"
-     unit_number = 1
-    }
-
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
     timeout =180
